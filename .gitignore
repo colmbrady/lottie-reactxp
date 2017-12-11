@@ -21,6 +21,9 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
+# expo
+.expo/
+
 # Gradle
 /build/
 /RNTester/android/app/build/
@@ -58,3 +61,6 @@ node_modules
 
 /coverage
 /third-party
+# Haul
+#
+haul-debug.log

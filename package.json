@@ -4,25 +4,31 @@
   "description": "A ReactXP extension for Lottie from AirBnB",
   "main": "index.js",
   "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook-native":
+      "storybook start -p 7007 --haul ./.storybook/native/webpack.haul.storybook.js --platform all",
+    "storybook-web": "start-storybook -p 6006 -c ./.storybook/web",
+    "build-storybook": "build-storybook",
+    "haul": "haul"
   },
   "repository": {
     "type": "git",
-    "url": "http://stash"
+    "url": "https://github.com/colmbrady/lottie-reactxp"
   },
   "dependencies": {
     "bodymovin": "^4.13.0",
     "lottie-react-native": "^2.2.7",
     "lottie-web": "^5.0.4",
     "prop-types": "^15.5.9",
-    "reactxp": "^0.42.15"
+    "reactxp": "^0.46.3",
+    "react-native": "^0.51.0",
+    "react": "16.0.0",
+    "react-dom": "16.0.0"
   },
   "peerDependencies": {
-    "react": "16.0.0-alpha.12",
-    "react-dom": "16.0.0-alpha.12",
-    "react-native": "^0.46.0",
     "react-native-windows": "^0.33.0"
   },
   "keywords": ["ReactXP", "Lottie"],
@@ -34,17 +40,19 @@
     "@storybook/addon-actions": "^3.2.17",
     "@storybook/addon-links": "^3.2.17",
     "@storybook/react": "^3.2.17",
+    "@storybook/react-native": "^3.2.17",
     "babel-eslint": "^8.0.3",
     "babel-loader": "^8.0.0-beta.0",
+    "babel-preset-react-native": "^4.0.0",
     "babel-preset-react-native-stage-0": "^1.0.1",
     "eslint": "^4.13.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.5.1",
+    "haul": "^1.0.0-beta.11",
     "prettier-eslint": "^8.2.5",
     "reactxp": "^0.42.15",
-    "storybook": "^1.0.0",
     "webpack": "^3.10.0"
   }
 }

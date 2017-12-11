@@ -1,1 +1,1 @@
-import '../native-common/Lottie';
+module.exports = require('../native-common/index');

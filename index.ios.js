@@ -1,1 +1,1 @@
-module.exports = require('./src/ios/index.js');
+module.exports = require('./src/ios/index');
