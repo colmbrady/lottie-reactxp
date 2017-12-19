@@ -1,9 +1,19 @@
+node_modules/
+.expo/
+npm-debug.*
+
+# Haul
+#
+haul-debug.log
+.happypack
+
+# OSX
+#
+.DS_Store
+
 # Xcode
-!**/*.xcodeproj
-!**/*.pbxproj
-!**/*.xcworkspacedata
-!**/*.xcsettings
-!**/*.xcscheme
+#
+build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -21,46 +31,19 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
-# expo
-.expo/
-
-# Gradle
-/build/
-/RNTester/android/app/build/
-/RNTester/android/app/gradle/
-/RNTester/android/app/gradlew
-/RNTester/android/app/gradlew.bat
-/ReactAndroid/build/
-
-# Buck
-.buckd
-buck-out
-/ReactAndroid/src/main/jni/prebuilt/lib/armeabi-v7a/
-/ReactAndroid/src/main/jni/prebuilt/lib/x86/
-/ReactAndroid/src/main/gen
-
-# Android
+# Android/IJ
+#
 .idea
 .gradle
 local.properties
-*.iml
-/android/
 
-# Node
-node_modules
-*.log
-.nvm
-/danger/node_modules/
-
-# OS X
-.DS_Store
-
-# Test generated files
-/ReactAndroid/src/androidTest/assets/AndroidTestBundle.js
-*.js.meta
-
-/coverage
-/third-party
-# Haul
+# node.js
 #
-haul-debug.log
+node_modules/
+npm-debug.log
+
+# BUCK
+buck-out/
+\.buckd/
+android/app/libs
+android/keystores/debug.keystore
