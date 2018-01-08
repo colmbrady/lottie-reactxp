@@ -1,24 +1,81 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Animated, Easing } from 'react-native';
 import AnimatedLottieView from 'lottie-react-native';
 
+/**
+ * Class acts as a simple wrapper around a React Native Lottie component.
+ */
 export default class Lottie extends React.Component {
+  constructor(props) {
+    super(props);
+    this.doCallback = this.doCallback.bind(this);
+    this.state = {
+      progress: new Animated.Value(0),
+    };
+  }
+
   componentDidMount() {
-    this.animation.play();
+    this.startAnimation();
+  }
+
+  componentWillUpdate(nextProps) {
+    // Kill current anim if we detect a new one it needed
+    if (this.props.source !== nextProps.source) {
+      this.stop();
+    }
   }
 
   componentDidUpdate() {
     /* eslint-disable no-unused-expressions */
-    this.props.isStopped ? this.animation.reset() : this.animation.play();
+    this.props.isStopped ? this.stop() : this.startAnimation(); // TODO: maybe dont start again?
+  }
+
+  componentDidUnmount() {
+    this.stop();
+  }
+
+  doCallback(event) {
+    if (event.finished) {
+      if (this.props.loop) {
+        this.props.onLoopComplete();
+        this.startAnimation();
+      } else {
+        this.props.onComplete();
+      }
+    }
+  }
+
+  startAnimation() {
+    this.state.progress.setValue(0);
+    // We dont use the Animated.loop API as it appears
+    // on-complete callbacks dont get called when its used.
+    Animated.timing(this.state.progress, {
+      toValue: 1,
+      duration: (this.props.speed * 3000), // 3000 seems to make a speed of 1 === 1 second
+      easing: Easing.linear,
+      useNativeDriver: true, // to dispatch on native thread so UI does not block
+    }).start(this.doCallback);
+  }
+
+  stop() {
+    Animated.timing(this.state.progress).stop();
   }
 
   render() {
+    const {
+      source, loop, isStopped, speed, style,
+    } = this.props;
+    style.width = this.props.width;
+    style.height = this.props.height;
     return (
       <AnimatedLottieView
-        ref={(animation) => {
-          this.animation = animation;
-        }}
-        {...this.props}
+        progress={this.state.progress}
+        source={source}
+        loop={loop}
+        isStopped={isStopped}
+        speed={speed}
+        style={style}
       />
     );
   }
@@ -32,8 +89,9 @@ Lottie.propTypes = {
   speed: PropTypes.number,
   width: PropTypes.number,
   height: PropTypes.number,
-  /* eslint-disable react/forbid-prop-types, react/no-unused-prop-types */
   style: PropTypes.object,
+  onComplete: PropTypes.func,
+  onLoopComplete: PropTypes.func,
 };
 
 Lottie.defaultProps = {
@@ -43,4 +101,6 @@ Lottie.defaultProps = {
   style: {},
   width: undefined,
   height: undefined,
+  onComplete: () => {},
+  onLoopComplete: () => {},
 };

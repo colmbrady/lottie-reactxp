@@ -22,6 +22,8 @@ export default class Lottie extends React.Component {
     };
 
     this.anim = bodymovin.loadAnimation(this.options);
+    this.anim.addEventListener('complete', this.props.onComplete);
+    this.anim.addEventListener('loopComplete', this.props.onLoopComplete);
   }
 
   componentWillUpdate(nextProps) {
@@ -37,6 +39,11 @@ export default class Lottie extends React.Component {
     /* eslint-disable no-unused-expressions */
     this.props.isStopped ? this.stop() : this.play();
     this.setSpeed();
+  }
+
+  componentWillUnmount() {
+    this.anim.removeEventListener('complete', this.props.onComplete);
+    this.anim.removeEventListener('loopComplete', this.props.onLoopComplete);  
   }
 
   setSpeed() {
@@ -56,13 +63,13 @@ export default class Lottie extends React.Component {
   }
 
   render() {
-    const { width, height } = this.props;
+    const { style, width, height } = this.props;
     const lottieStyles = RX.Styles.createViewStyle({
       width,
       height,
       overflow: 'hidden',
       margin: '0 auto',
-    });
+    }, style);
     return (
       <RX.View
         ref={(node) => {
@@ -84,6 +91,8 @@ Lottie.propTypes = {
   height: PropTypes.number,
   /* eslint-disable react/forbid-prop-types, react/no-unused-prop-types */
   style: PropTypes.object,
+  onComplete: PropTypes.func,
+  onLoopComplete: PropTypes.func,
 };
 
 Lottie.defaultProps = {
@@ -93,4 +102,6 @@ Lottie.defaultProps = {
   style: {},
   width: undefined,
   height: undefined,
+  onComplete: () => {},
+  onLoopComplete: () => {},
 };
