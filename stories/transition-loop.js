@@ -34,7 +34,7 @@ export default class TransitionLoop extends React.Component {
 
     return (
       <RX.View>
-        <Lottie source={source} loop height={400} width={400} />
+        <Lottie source={source} loop height={400} width={400} duration={2} />
         <RX.Button style={buttonStyle} onPress={this.clickHandlerB}>
           <RX.Text>restart</RX.Text>
         </RX.Button>

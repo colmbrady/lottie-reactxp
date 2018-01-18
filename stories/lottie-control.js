@@ -9,7 +9,7 @@ export default class LottieControl extends React.Component {
 
     this.state = {
       isStopped: false,
-      speed: 1,
+      duration: '1',
     };
   }
 
@@ -29,9 +29,8 @@ export default class LottieControl extends React.Component {
     });
     const buttonStyle = RX.Styles.createButtonStyle({
       margin: 10,
-      textAlign: 'center',
     });
-    const { isStopped, speed } = this.state;
+    const { isStopped, duration } = this.state;
     return (
       <RX.View>
         <Lottie
@@ -39,14 +38,16 @@ export default class LottieControl extends React.Component {
           isStopped={isStopped}
           height={400}
           width={400}
-          speed={speed}
+          duration={Number(duration)}
+          onLoopComplete={() => { console.log('onLoopComplete', Date.now()); }}
+          onComplete={() => { console.log('onComplete'); }}
         />
-        <RX.Text style={textStyle}>Speed: x{speed}</RX.Text>
+        <RX.Text style={textStyle}>Speed: x{duration}</RX.Text>
         <RX.TextInput
           style={textInputStyle}
-          value={speed}
+          value={duration}
           editable
-          onChangeText={value => this.setState({ speed: Number(value) })}
+          onChangeText={value => this.setState({ duration: value })}
         />
         <RX.Button style={buttonStyle} onPress={() => this.setState({ isStopped: true })}>
           <RX.Text>stop</RX.Text>
