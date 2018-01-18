@@ -11,12 +11,24 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook-native": "storybook start -p 7007 --haul ./.storybook/native/webpack.haul.storybook.js --platform all",
     "storybook-web": "start-storybook -p 6006 -c ./.storybook/web",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepublish": "npm run build"
   },
+  "files": [
+    "LICENSE.md",
+    "README.md",
+    "./index.js", 
+    "dist/", 
+    "src/",
+    "index.ios.js", 
+    "index.android.js"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/colmbrady/lottie-reactxp"
+    "url": "https://github.com/colmbrady/lottie-reactxp.git"
   },
+  "bugs": "https://github.com/colmbrady/lottie-reactxp/issues",
+  "homepage": "https://github.com/colmbrady/lottie-reactxp#readme",
   "dependencies": {
     "bodymovin": "^4.13.0",
     "lottie-react-native": "^2.2.7",
