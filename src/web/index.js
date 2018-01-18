@@ -9,21 +9,19 @@ import bodymovin from 'bodymovin';
  */
 export default class Lottie extends React.Component {
   componentDidMount() {
-    const { loop, speed, source } = this.props;
+    const { loop, source } = this.props;
 
     this.options = {
       /* eslint-disable react/no-find-dom-node */
       container: ReactDOM.findDOMNode(this.node),
       renderer: 'svg',
       loop: loop !== false,
-      autoplay: true,
+      autoplay: false,
       animationData: source,
-      speed,
     };
 
-    this.anim = bodymovin.loadAnimation(this.options);
-    this.anim.addEventListener('complete', this.props.onComplete);
-    this.anim.addEventListener('loopComplete', this.props.onLoopComplete);
+    this.setUpAnimation();
+    this.play();
   }
 
   componentWillUpdate(nextProps) {
@@ -31,7 +29,8 @@ export default class Lottie extends React.Component {
     if (this.options.animationData !== nextProps.source) {
       this.destroy();
       this.options.animationData = nextProps.source;
-      this.anim = bodymovin.loadAnimation(this.options);
+      this.setUpAnimation();
+      this.play();
     }
   }
 
@@ -42,12 +41,24 @@ export default class Lottie extends React.Component {
   }
 
   componentWillUnmount() {
-    this.anim.removeEventListener('complete', this.props.onComplete);
-    this.anim.removeEventListener('loopComplete', this.props.onLoopComplete);  
+    this.destroy();
+  }
+
+  setUpAnimation() {
+    this.anim = bodymovin.loadAnimation(this.options);
+    this.setSpeed();
+    this.anim.addEventListener('complete', this.props.onComplete);
+    this.anim.addEventListener('loopComplete', this.props.onLoopComplete);
   }
 
   setSpeed() {
-    this.anim.setSpeed(this.props.speed);
+    this.anim.setSpeed(this.calculateSpeed());
+  }
+
+  calculateSpeed() {
+    const defaultDuration = this.anim.totalFrames / this.anim.frameRate;
+    const desiredDuration = this.props.duration;
+    return (defaultDuration / desiredDuration);
   }
 
   play() {
@@ -59,6 +70,8 @@ export default class Lottie extends React.Component {
   }
 
   destroy() {
+    this.anim.removeEventListener('complete', this.props.onComplete);
+    this.anim.removeEventListener('loopComplete', this.props.onLoopComplete);
     this.anim.destroy();
   }
 
@@ -86,7 +99,7 @@ Lottie.propTypes = {
   source: PropTypes.object.isRequired,
   loop: PropTypes.bool,
   isStopped: PropTypes.bool,
-  speed: PropTypes.number,
+  duration: PropTypes.number,
   width: PropTypes.number,
   height: PropTypes.number,
   /* eslint-disable react/forbid-prop-types, react/no-unused-prop-types */
@@ -98,7 +111,7 @@ Lottie.propTypes = {
 Lottie.defaultProps = {
   isStopped: false,
   loop: true,
-  speed: 1,
+  duration: 1,
   style: {},
   width: undefined,
   height: undefined,

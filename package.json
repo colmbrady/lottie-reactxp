@@ -1,18 +1,17 @@
 {
   "name": "lottie-reactxp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A ReactXP extension for Lottie from AirBnB",
   "main": "index.js",
   "scripts": {
-    "start": "react-native start",
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "dev:setup": "npm i && node ./node_modules/.bin/npm-install-peers",
+    "dev:android": "react-native run-android",
+    "dev:ios": "react-native run-ios",
+    "build": "babel src/web/index.js --out-file dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook-native":
-      "storybook start -p 7007 --haul ./.storybook/native/webpack.haul.storybook.js --platform all",
+    "storybook-native": "storybook start -p 7007 --haul ./.storybook/native/webpack.haul.storybook.js --platform all",
     "storybook-web": "start-storybook -p 6006 -c ./.storybook/web",
-    "build-storybook": "build-storybook",
-    "haul": "haul"
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -22,16 +21,19 @@
     "bodymovin": "^4.13.0",
     "lottie-react-native": "^2.2.7",
     "lottie-web": "^5.0.4",
-    "prop-types": "^15.5.9",
-    "reactxp": "^0.46.3",
-    "react-native": "^0.51.0",
-    "react": "16.0.0",
-    "react-dom": "16.0.0"
+    "prop-types": "^15.5.9"
   },
   "peerDependencies": {
-    "react-native-windows": "^0.33.0"
+    "react-native-windows": "^0.33.0",
+    "react-native": "^0.51.0",
+    "react-dom": "^16.0.0",
+    "react": "^16.0.0",
+    "reactxp": "^0.46.3"
   },
-  "keywords": ["ReactXP", "Lottie"],
+  "keywords": [
+    "ReactXP",
+    "Lottie"
+  ],
   "author": "Colm Brady",
   "license": "MIT",
   "devDependencies": {
@@ -41,6 +43,7 @@
     "@storybook/addon-links": "^3.2.17",
     "@storybook/react": "^3.2.17",
     "@storybook/react-native": "^3.2.17",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-loader": "^8.0.0-beta.0",
     "babel-preset-react-native": "^4.0.0",
@@ -51,6 +54,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.5.1",
     "haul": "^1.0.0-beta.11",
+    "npm-install-peers": "^1.2.1",
     "prettier-eslint": "^8.2.5",
     "reactxp": "^0.42.15",
     "webpack": "^3.10.0"

@@ -48,11 +48,11 @@ export default class Lottie extends React.Component {
 
   startAnimation() {
     this.state.progress.setValue(0);
-    // We dont use the Animated.loop API as it appears
+    // We dont use the "Animated.loop" API as it appears
     // on-complete callbacks dont get called when its used.
     Animated.timing(this.state.progress, {
       toValue: 1,
-      duration: (this.props.speed * 3000), // 3000 seems to make a speed of 1 === 1 second
+      duration: (this.props.duration * 1000), // convert to seconds to millis
       easing: Easing.linear,
       useNativeDriver: true, // to dispatch on native thread so UI does not block
     }).start(this.doCallback);
@@ -64,7 +64,7 @@ export default class Lottie extends React.Component {
 
   render() {
     const {
-      source, loop, isStopped, speed, style,
+      source, loop, isStopped, style,
     } = this.props;
     style.width = this.props.width;
     style.height = this.props.height;
@@ -74,7 +74,7 @@ export default class Lottie extends React.Component {
         source={source}
         loop={loop}
         isStopped={isStopped}
-        speed={speed}
+        speed={1} // Always run at normal speed and duration controls anim length
         style={style}
       />
     );
@@ -86,7 +86,7 @@ Lottie.propTypes = {
   source: PropTypes.object.isRequired,
   loop: PropTypes.bool,
   isStopped: PropTypes.bool,
-  speed: PropTypes.number,
+  duration: PropTypes.number,
   width: PropTypes.number,
   height: PropTypes.number,
   style: PropTypes.object,
@@ -97,7 +97,7 @@ Lottie.propTypes = {
 Lottie.defaultProps = {
   isStopped: false,
   loop: true,
-  speed: 1,
+  duration: 1,
   style: {},
   width: undefined,
   height: undefined,
