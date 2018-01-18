@@ -15,7 +15,7 @@ provided by Microsft does not implement the complete set of SVG elements. Lottie
 Lets start by installing the NPM dependencies and peer dependencies.
 
 ```sh
-npm run dev:setup 
+npm run dev:setup
 ```
 
 Next follow the
@@ -46,10 +46,12 @@ npm i npm install https://github.com/colmbrady/lottie-reactxp/tarball/v1.0.0 --s
 Use in your code:
 
 ```javascript
+import RX from 'reactxp';
 import Lottie from 'lottie-reactxp';
 import lottieData from './lottie-data.json';
 ...
 render() {
+    // state can be used to control the animation
     const { isStopped, duration } = this.state;
     return (
       <RX.View>
@@ -66,3 +68,17 @@ render() {
     );
 }
 ```
+
+## Available props:
+
+| Name           | Description                                                                                                                                                                    | Type   | Required | Default   |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | -------- | --------- |
+| source         | The Lottie data as a JSON file                                                                                                                                                 | object | Yes      | -         |
+| loop           | Whether the animaiton will repeat indefinitly                                                                                                                                  | bool   | No       | true      |
+| isStopped      | True will stop animation, false will continue animation.                                                                                                                       | bool   | No       | false     |
+| duration       | Amount of seconds to run animation for. Setting the duration to the same amount as the Lottie animation length will result in a "speed" of 1 being set on the Lottie renderer. | number | No       | 1         |
+| width          | Sets the px width of the container surrounding animation                                                                                                                       | number | No       | undefined |
+| height         | Sets the px height of the container surrounding animation                                                                                                                      | number | No       | undefined |
+| style          | passes style information down to the underlying Lottie control                                                                                                                 | object | No       | {}        |
+| onComplete     | callback triggered when an animation has finished and loop is false.                                                                                                           | func   | No       | () => {}  |
+| onLoopComplete | callback triggered when an animation has finished and loop is true.                                                                                                            | func   | No       | () => {}  |
