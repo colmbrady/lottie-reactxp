@@ -24,13 +24,13 @@ Next follow the
 Finally, run the story book on either Web:
 
 ```sh
-npm run starybook-web
+npm run storybook-web
 ```
 
 and/or Native:
 
 ```sh
-npm run starybook-native
+npm run storybook-native
 npm run dev:ios
 npm run dev:android
 ```
