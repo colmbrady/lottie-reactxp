@@ -43,15 +43,7 @@ npm run dev:android
 Npm install module from GitHub:
 
 ```sh
-npm i npm install https://github.com/colmbrady/lottie-reactxp/archive/1.1.0.tar.gz --save
-```
-
-Currently you must manually install and build Lottie ReactXP. This will be resolved when it gets published to NPM.
-
-```sh
-cd node_modules/lottie-reactxp
-npm run dev:setup
-npm run build
+npm i lottie-reactxp --save
 ```
 
 Next follow the
