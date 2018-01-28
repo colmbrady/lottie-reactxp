@@ -9,14 +9,13 @@ export default class LottieControl extends React.Component {
 
     this.state = {
       isStopped: false,
-      duration: '1',
+      duration: '3',
     };
   }
 
   render() {
     const textStyle = RX.Styles.createTextStyle({
       margin: 10,
-      textAlign: 'center',
     });
     const textInputStyle = RX.Styles.createTextInputStyle({
       margin: 8,
@@ -42,7 +41,7 @@ export default class LottieControl extends React.Component {
           onLoopComplete={() => { console.log('onLoopComplete', Date.now()); }}
           onComplete={() => { console.log('onComplete'); }}
         />
-        <RX.Text style={textStyle}>Speed: x{duration}</RX.Text>
+        <RX.Text style={textStyle}>Duration: x{duration}</RX.Text>
         <RX.TextInput
           style={textInputStyle}
           value={duration}

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import bodymovin from 'bodymovin';
 
 /**
- * Based on https://github.com/chenqingspring/react-lottie
+ * Based somewhat on https://github.com/chenqingspring/react-lottie
  */
 export default class Lottie extends React.Component {
   componentDidMount() {

@@ -31,7 +31,7 @@ export default class Lottie extends React.Component {
     this.props.isStopped ? this.stop() : this.startAnimation(); // TODO: maybe dont start again?
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     this.stop();
   }
 
@@ -53,7 +53,7 @@ export default class Lottie extends React.Component {
     Animated.timing(this.state.progress, {
       toValue: 1,
       duration: (this.props.duration * 1000), // convert to seconds to millis
-      easing: Easing.linear,
+      easing: Easing.linear, // Dont distort the anim with extra anim effects 
       useNativeDriver: true, // to dispatch on native thread so UI does not block
     }).start(this.doCallback);
   }
