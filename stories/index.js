@@ -18,6 +18,6 @@ const RXDecorator = (storyFn) => {
 
 addDecorator(RXDecorator);
 
-storiesOf('Lottie Animation View', module)
+storiesOf('Lottie Animation Examples', module)
   .add('with control', () => <LottieControl />)
   .add('transitions & loops', () => <TransitionLoop />);

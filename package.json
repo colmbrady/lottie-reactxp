@@ -17,10 +17,10 @@
   "files": [
     "LICENSE.md",
     "README.md",
-    "./index.js", 
-    "dist/", 
+    "./index.js",
+    "dist/",
     "src/",
-    "index.ios.js", 
+    "index.ios.js",
     "index.android.js"
   ],
   "repository": {
