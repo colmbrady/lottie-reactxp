@@ -11,17 +11,19 @@ The reason for creating this etension is because the existing SVG ReactXP extens
 provided by Microsft does not implement the complete set of SVG elements. Lottie avoids having to deal directly with SVG.
 
 ## Getting Started (Development)
+Its a prequisite to set up [React Native](https://facebook.github.io/react-native/) if you intend on running the Lottie examples on IOS or Andoid. Install React Native CLI by following this [guide](https://facebook.github.io/react-native/doc/getting-started.html). Follow the "Building Projects from Native Code" tab.
 
-Lets start by installing the NPM dependencies and peer dependencies.
+For development, lets start by installing the NPM dependencies and peer dependencies.
 
 ```sh
-npm run dev:setup
+npm run dev:setup # run from the checkout location
 ```
 
-Next follow the
-[Lottie RN Setup](http://airbnb.io/lottie/react-native/react-native.html).
+The example Lottie components can be viewed using a [Storybook](https://storybook.js.org/). Storybook is a demo playground for React components.
 
-Finally, run the story book on either Web:
+If using the bundled Storybook - the [Lottie RN Setup](http://airbnb.io/lottie/react-native/react-native.html) has already been done.
+
+Finally, run the Storybook on either Web:
 
 ```sh
 npm run storybook-web
@@ -35,8 +37,9 @@ npm run dev:ios
 npm run dev:android
 ```
 
-## Getting Started (Usage)
+`npm run build` can be used to rebuild the source code.
 
+## Getting Started (Usage)
 Npm install module from GitHub:
 
 ```sh
@@ -51,7 +54,18 @@ npm run dev:setup
 npm run build
 ```
 
-Use in your code:
+Next follow the
+[Lottie RN Setup](http://airbnb.io/lottie/react-native/react-native.html). Note, you can skip installing the `lottie-react-native` NPM module as it's a dependency of this module. You will still have to do the react native linking steps however.
+
+You will also need to have your required peer dependencies. The recommended peer dependencies are:
+
+- "react-native-windows": ">= 0.33.0"
+- "react-native": ">= 0.51.0"
+- "react-dom": ">= 16.0.0"
+- "react": ">= 16.0.0"
+- "reactxp": ">= 0.46.3"
+
+You should be able to use in your code:
 
 ```javascript
 import RX from 'reactxp';
@@ -90,3 +104,9 @@ render() {
 | style          | passes style information down to the underlying Lottie control                                                                                                                 | object | No       | {}        |
 | onComplete     | callback triggered when an animation has finished and loop is false.                                                                                                           | func   | No       | () => {}  |
 | onLoopComplete | callback triggered when an animation has finished and loop is true.                                                                                                            | func   | No       | () => {}  |
+
+## Found a bug?
+Please raise an [issue](https://github.com/colmbrady/lottie-reactxp/issues) if you have problems.
+
+## Contributing
+Im open to contributions and improvements. Please raise an [issue](https://github.com/colmbrady/lottie-reactxp/issues) to discuss.
