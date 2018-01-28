@@ -1,6 +1,6 @@
 {
   "name": "lottie-reactxp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A ReactXP extension for Lottie from AirBnB",
   "main": "index.js",
   "scripts": {
