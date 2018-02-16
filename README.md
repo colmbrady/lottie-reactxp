@@ -1,7 +1,7 @@
 # Lottie React
 
 Exposes [Lottie](https://airbnb.design/lottie/) as a
-ReactXP extension.
+[ReactXP](https://microsoft.github.io/reactxp/) extension.
 
 Lottie is an iOS, Android, and React Native library that renders After Effects
 animations in real time, allowing apps to use animations as easily as they use
