@@ -1,1 +1,1 @@
-module.exports = require('./src/android/index');
+module.exports = require('./dist/android/index');

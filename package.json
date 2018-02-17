@@ -7,7 +7,7 @@
     "dev:setup": "npm i && node ./node_modules/.bin/npm-install-peers",
     "dev:android": "react-native run-android",
     "dev:ios": "react-native run-ios",
-    "build": "babel src/web/index.js --out-file dist/index.js",
+    "build": "babel src --out-dir dist --source-maps",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook-native": "storybook start -p 7007 --haul ./.storybook/native/webpack.haul.storybook.js --platform all",
     "storybook-web": "start-storybook -p 6006 -c ./.storybook/web",
@@ -19,7 +19,6 @@
     "README.md",
     "./index.js",
     "dist/",
-    "src/",
     "index.ios.js",
     "index.android.js"
   ],
@@ -32,7 +31,6 @@
   "dependencies": {
     "bodymovin": "^4.13.0",
     "lottie-react-native": "^2.2.7",
-    "lottie-web": "^5.0.4",
     "prop-types": "^15.5.9"
   },
   "peerDependencies": {
