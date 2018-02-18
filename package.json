@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook-native": "storybook start -p 7007 --haul ./.storybook/native/webpack.haul.storybook.js --platform all",
     "storybook-web": "start-storybook -p 6006 -c ./.storybook/web",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -c ./.storybook/web -o docs",
     "prepublish": "npm run build"
   },
   "files": [
