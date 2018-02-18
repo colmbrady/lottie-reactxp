@@ -1,5 +1,7 @@
 # Lottie React
 
+[![Build Status](https://circleci.com/gh/colmbrady/lottie-reactxp.svg?style=shield&circle-token=1ba254c5e6a14a24fb7d89baa497f50a2097a9b8f)](https://circleci.com/gh/colmbrady/lottie-reactxp/)
+
 Exposes [Lottie](https://airbnb.design/lottie/) as a
 [ReactXP](https://microsoft.github.io/reactxp/) extension.
 
